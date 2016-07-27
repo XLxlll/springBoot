@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="captchaProducer" class="com.google.code.kaptcha.impl.DefaultKaptcha">
+        <!--name默认只有config-->
+        <property name="config">
+            <bean class="com.google.code.kaptcha.util.Config">
+                <constructor-arg>
+                    <props>
+                        <!--图片边框，yes，no-->
+                        <prop key="kaptcha.border">yes</prop>
+                        <!--边框颜色，RGB或white，blue-->
+                        <prop key="kaptcha.border.color">105,179,90</prop>
+                        <!--字体颜色、大小-->
+                        <prop key="kaptcha.textproducer.font.color">blue</prop>
+                        <prop key="kaptcha.textproducer.font.size">60</prop>
+                        <!--图片的宽高-->
+                        <prop key="kaptcha.image.width">170</prop>
+                        <prop key="kaptcha.image.height">65</prop>
+                        <!--文字之间的间隔-->
+                        <prop key="kaptcha.textproducer.char.space">2</prop>
+                        <prop key="kaptcha.session.key">code</prop>
+                        <!--文本集合，验证码值从此集合中获取:ABCDEFGHIGKLMNOPQRSTYVWXYZ123456789：表示验证码既有数字又有字母
+                        验证码的长度、字体-->
+                        <prop key="kaptcha.textproducer.char.string">ABCDEFGHIGKLMNOPQRSTYVWXYZ123456789</prop>
+                        <!--鱼眼.FishEyeGimpy；阴影ShadowGimpy;水纹：WaterRipple-->
+                        <prop key="kaptcha.obscurificator.impl">com.google.code.kaptcha.impl.WaterRipple</prop>
+                        <!-- 干扰线（去的话com.google.code.kaptcha.impl.NoNoise） -->
+                        <!--鱼眼效果的话干扰线看不出来-->
+                        <prop key="kaptcha.noise.impl">com.google.code.kaptcha.impl.DefaultNoise</prop>
+                        <prop key="kaptcha.noise.color">green</prop>
+                        <!--设置验证码背景颜色渐变！-->
+                        <!--<prop key="kaptcha.background.clear.from">ligth grey</prop>-->
+                        <!--<prop key="kaptcha.background.clear.to">red</prop>-->
+                        <!--验证码长度-->
+                        <prop key="kaptcha.textproducer.char.length">4</prop>
+                        <prop key="kaptcha.textproducer.font.names">微软雅黑</prop>
+                    </props>
+                </constructor-arg>
+            </bean>
+        </property>
+    </bean>
+</beans>
